@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        #game-screen,
+        #test {
+            background-color: aqua;
+            width: 300px;
+            height: 200px;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            gap: 2px;
+            padding-top: 15px;
+            padding-left: 15px;
+        }
+
+        .cell {
+            background-color: red;
+            width: 50px;
+            height: 50px;
+        }
+
+        #yellow {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+
+<body>
+    <h1>Score: <span id="score">0</span></h1>
+    <div id="game-screen">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+
+    <script>
+        let allCells = document.getElementsByClassName("cell");
+        let currentChoosenCell = allCells[0];
+        let score = -1;
+        let previousIndex = 0;
+        changeColor();
+
+        function changeColor() {
+            let newCell = getRandomItem(allCells);
+            if (newCell.id == "yellow") {
+                console.log("Random failed....");
+                changeColor();
+            } else {
+                currentChoosenCell.removeEventListener("click", changeColor);
+                // Reset the id of the currently choosen cell
+                currentChoosenCell.id = "";
+
+                currentChoosenCell = newCell;
+                // Replaces whatever current cell color with a yellow one
+                currentChoosenCell.id = "yellow";
+
+                // Event Listener
+                // Part 1: Type, "click", "keyboard key", "hover"
+                // Part 2: Function that executes when the event happens
+                currentChoosenCell.addEventListener("click", changeColor);
+                score += 1;
+                document.getElementById("score").innerHTML = score;
+            }
+        }
+
+        // Returns a random item of any array / collection you give it
+        function getRandomItem(array) {
+
+            // get random index value
+            let index = Math.floor(Math.random() * array.length);
+            while (index == previousIndex) {
+                console.log("Random failed, trying again: " + index);
+                index = Math.floor(Math.random() * array.length);
+            }
+
+            for (let i = 0; i < 10; i++) {
+
+            }
+
+            previousIndex = index;
+
+            // get random item
+            const item = array[previousIndex];
+
+            return item;
+        }
+
+    </script>
+</body>
+
+</html>
