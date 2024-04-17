@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myStuff {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myStuff">
+        <p class="myClass">Hello World</p>
+        <h2 class="myClass">Hello World</h2>
+        <article class="myClass">Hello World!!</article>
+        <article class="myClass">Hello World?</article>
+        <!-- Here -->
+    </div>
+    <br><br>
+    <input type="button" value="Submit" onclick="changeMyArticle()">
+    <input type="button" value="Submit2" onclick="changeMyParagraph()">
+    <input type="button" value="Submit3" onclick="changeMyHeader2()">
+    <input type="button" value="Submit4" onclick="changeMySecondArticle()">
+
+    <script>
+        let myClasses = document.getElementsByClassName("myClass");
+        console.log(myClasses.length);
+
+        // This refers to the paragraph above
+        let myParagraph = myClasses[0];
+        let myHeader2 = myClasses[1];
+        let myArticle = myClasses[2];
+        let mySecondArticle = myClasses[3];
+
+        myHeader2.innerHTML = "The second element";
+
+        function changeMyArticle() {
+            myArticle.innerHTML = "The third element";
+        }
+
+        function changeMyParagraph() {
+            myParagraph.innerHTML += "!";
+        }
+
+        function changeMyHeader2() {
+            myHeader2.innerHTML += "☺";
+        }
+
+        let x = 0;
+
+        function changeMySecondArticle() {
+            // Long hand
+            x = x + 1; // 1
+
+            // 4 short hands 
+            x += 1;
+            x *= 2;
+            x /= 2;
+            x -= 1;
+            mySecondArticle.innerHTML = x;
+        }
+    </script>
+
+</body>
+
+</html>
